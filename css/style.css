@@ -460,40 +460,18 @@ textarea.input {
   top: 5px
 }
 .qs-datepicker-container {
-  margin: 5px;
   font-size: 1rem;
   font-family: sans-serif;
   color: #000;
   position: absolute;
-  width: 15.625em;
+  width: 440px;
   display: flex;
   flex-direction: column;
   z-index: 9001;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 1.25em 1.25em -.9375em rgba(0,0,0,.3);
-  border-right: 1px solid #fff;
-  border-left: 1px solid #f1ad70;
-  padding: 5px
-}
-.qs-datepicker-container:after,
-.qs-datepicker-container:before {
-  content: "";
-  width: 100%;
-  height: 2px;
-  left: 0;
-  z-index: 2;
-  position: absolute;
-  background-image: linear-gradient(to right,#f1ad70 0,#fffdf2 100%)
-}
-.qs-datepicker-container:before {
-  top: 0
-}
-.qs-datepicker-container:after {
-  bottom: 0
+  overflow: hidden
 }
 .qs-datepicker-container * {
   box-sizing: border-box
@@ -582,69 +560,51 @@ textarea.input {
   opacity: 1
 }
 .qs-datepicker .qs-controls {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-grow: 1;
   flex-shrink: 0;
-  background: #000;
-  color: #fff;
-  -webkit-filter: blur(0);
-  filter: blur(0);
-  transition: -webkit-filter .3s;
-  transition: filter .3s;
-  transition: filter .3s,-webkit-filter .3s;
-  transition: filter .3s,-webkit-filter .3s
+  background: var(--clr-cream);
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 1.28571;
+  color: var(--clr-green-dark)
 }
 .qs-datepicker .qs-controls.qs-blur {
   -webkit-filter: blur(5px);
   filter: blur(5px)
 }
 .qs-datepicker .qs-arrow {
-  height: 1.5625em;
-  width: 1.5625em;
   position: relative;
-  cursor: pointer;
-  border-radius: .26392em;
-  transition: background .15s
+  cursor: pointer
+}
+.qs-datepicker .qs-arrow::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: url(../img/icons/shevron.svg) center/cover no-repeat
 }
 .qs-datepicker .qs-arrow:hover {
   background: rgba(0,0,0,.1)
 }
-.qs-datepicker .qs-arrow:hover.qs-left:after {
-  border-right-color: #000
+.qs-datepicker .qs-left.qs-arrow {
+  padding-left: 8px
 }
-.qs-datepicker .qs-arrow:hover.qs-right:after {
-  border-left-color: #000
+.qs-datepicker .qs-left.qs-arrow::before {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg)
 }
-.qs-datepicker .qs-arrow:after {
-  content: "";
-  border: .39062em solid transparent;
-  position: absolute;
-  top: 50%;
-  transition: border .2s
-}
-.qs-datepicker .qs-arrow.qs-left:after {
-  border-right-color: gray;
-  right: 50%;
-  -webkit-transform: translate(25%,-50%);
-  transform: translate(25%,-50%)
-}
-.qs-datepicker .qs-arrow.qs-right:after {
-  border-left-color: gray;
-  left: 50%;
-  -webkit-transform: translate(-25%,-50%);
-  transform: translate(-25%,-50%)
+.qs-datepicker .qs-right.qs-arrow {
+  padding-right: 8px
 }
 .qs-datepicker .qs-month-year {
-  font-weight: 700;
-  transition: border .2s;
-  border-bottom: 1px solid transparent;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
   cursor: pointer
-}
-.qs-datepicker .qs-month-year:hover {
-  border-bottom: 1px solid gray
 }
 .qs-datepicker .qs-month-year:active:focus,
 .qs-datepicker .qs-month-year:focus {
@@ -658,15 +618,11 @@ textarea.input {
 }
 .qs-datepicker .qs-squares {
   display: flex;
-  color: #fff;
+  color: var(--text-primary);
   flex-wrap: wrap;
-  padding: .3125em;
-  -webkit-filter: blur(0);
-  filter: blur(0);
-  transition: -webkit-filter .3s;
-  transition: filter .3s;
-  transition: filter .3s,-webkit-filter .3s;
-  transition: filter .3s,-webkit-filter .3s
+  background: var(--clr-white);
+  border: 2px solid var(--text-primary);
+  border-radius: 4px
 }
 .qs-datepicker .qs-squares.qs-blur {
   -webkit-filter: blur(5px);
@@ -674,13 +630,15 @@ textarea.input {
 }
 .qs-datepicker .qs-square {
   width: 14.28571%;
-  height: 1.5625em;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: background .1s;
-  border-radius: .26392em
+  font-weight: 400;
+  font-size: 1rem;
+  border-top: 1px solid var(--text-primary)
 }
 .qs-datepicker .qs-square.qs-current {
   font-weight: 700
@@ -689,8 +647,8 @@ textarea.input {
   text-decoration: underline
 }
 .qs-datepicker .qs-square.qs-active {
-  background: #fff;
-  color: #000
+  background: var(--clr-gold-dark);
+  color: var(--clr-white)
 }
 .qs-datepicker .qs-square.qs-range-date-start:not(.qs-range-date-6) {
   border-top-right-radius: 0;
@@ -721,12 +679,16 @@ textarea.input {
   cursor: not-allowed
 }
 .qs-datepicker .qs-square.qs-day {
+  height: 2rem;
   cursor: default;
   font-weight: 700;
-  color: gray
+  color: var(--clr-gold);
+  font-size: 1.125rem;
+  border-bottom: 2px solid var(--text-primary)
 }
 .qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {
-  background: orange
+  background: var(--clr-gold);
+  color: var(--clr-white)
 }
 .qs-datepicker .qs-event {
   position: relative
