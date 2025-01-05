@@ -1354,10 +1354,11 @@
         if (document.querySelector("[data-datepicker]")) {
             const picker = datepicker_min("[data-datepicker]", {
                 customDays: [ "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд" ],
-                customMonths: [ "Янв", "Фев", "Март", "Апр", "Май", "Июнь", "Июль", "Авг", "Сент", "Окт", "Нояб", "Дек" ],
-                overlayButton: "Применить",
-                overlayPlaceholder: "Год (4 цифры)",
-                startDay: 1,
+                customMonths: [ "Сiчень", "Лютий", "Березень", "Квiтень", "Травень", "Липень", "Червень", "Серпень", "Версень", "Жовтень", "Листопад", "Грудень" ],
+                overlayButton: "застосувати",
+                overlayPlaceholder: "рiк (4 цифри)",
+                startDay: 0,
+                disableMobile: true,
                 formatter: (input, date, instance) => {
                     const value = date.toLocaleDateString();
                     input.value = value;
@@ -1366,6 +1367,23 @@
             });
             modules_flsModules.datepicker = picker;
         }
+        function toggleDatepicker() {
+            if (window.innerWidth > 991.98) document.querySelectorAll("[data-datepicker]").forEach((item => {
+                item.setAttribute("type", "text");
+            }));
+            if (window.innerWidth < 991.98) document.querySelectorAll("[data-datepicker]").forEach((item => {
+                item.setAttribute("type", "date");
+            }));
+            window.addEventListener("resize", (() => {
+                if (window.innerWidth > 991.98) document.querySelectorAll("[data-datepicker]").forEach((item => {
+                    item.setAttribute("type", "text");
+                }));
+                if (window.innerWidth < 991.98) document.querySelectorAll("[data-datepicker]").forEach((item => {
+                    item.setAttribute("type", "date");
+                }));
+            }));
+        }
+        toggleDatepicker();
         let addWindowScrollEvent = false;
         function headerScroll() {
             addWindowScrollEvent = true;
