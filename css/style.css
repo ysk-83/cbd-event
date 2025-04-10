@@ -1923,9 +1923,6 @@ body::after {
 .options-services {
   padding-bottom: 3rem
 }
-.options-services__spollers .spollers__item {
-  padding: .5rem
-}
 .plans {
   background-color: var(--clr-grey)
 }
@@ -3236,6 +3233,9 @@ body::after {
     line-height: 1.28571;
     background-color: var(--clr-cream);
     border: 1px solid transparent
+  }
+  .btn--green {
+    background-color: var(--clr-green)
   }
   [data-showmore-button] {
     width: 100%;
